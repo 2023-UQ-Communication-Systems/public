@@ -1,0 +1,35 @@
+<block>
+  <name>DemodM2</name>
+  <key>DemodM2_blk</key>
+  <category>UQComs</category>
+  <import>execfile("/home/ksb/.grc_gnuradio/demodm2.py")</import>
+  <make>demodm2(
+    samples_per_bit=$samples_per_bit,threshold=$threshold
+)</make>
+  <callback>set_size($size)</callback>
+  <param>
+    <name>Samples Per Bit</name>
+    <key>samples_per_bit</key>
+    <value>4</value>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>treshold</name>
+    <key>threshold</key>
+    <value>0.0</value>
+    <type>raw</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+    <vlen>1</vlen>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>byte</type>
+    <vlen>1</vlen>
+  </source>
+  <doc>Konstanty
+Demodulate M2 Data
+Source in demodm2.py</doc>
+</block>
