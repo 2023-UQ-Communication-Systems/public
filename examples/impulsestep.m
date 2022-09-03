@@ -1,6 +1,6 @@
 %		     The University of Queensland
 %     School of Information Technology & Electrical Engineering
-%	         COMS4105/7410 Digital Communications
+%	         COMS4105 Digital Communications
 
 % Generate a plot of a discrete-time impulse and a continuous-time step
 

@@ -1,6 +1,6 @@
 %                        The University of Queensland
 %     School of Information Technology & Electrical Engineering
-%		COMS4105/COMS7410 Communication Systems
+%		COMS4105 Communication Systems
 
 % Plot the capacity of a binary symmetric channel
 alpha = 0.02:0.02:0.98;
