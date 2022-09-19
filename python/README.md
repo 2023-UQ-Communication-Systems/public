@@ -5,3 +5,4 @@ This directory contains a number of utility functions in python.
 * SpectrumPlot-Python - this example shows how to use the welch function in Python. It shows a single sided and two sided spectrum.
 (It basically depends on if the input is real or complex)
 * read_complex_byte - this file contains some functions which let you load files recorded using `rtl_sdr`
+* bitutil.py - this file contains functions to mimic MATLAB's int2bit, bit2int
