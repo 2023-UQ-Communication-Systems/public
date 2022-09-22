@@ -8,5 +8,7 @@ function [X] = bit2int(Y, n, msbfirst)
 	    order = 'right-msb';
 	end
 	Ysize = size(Y);
-	Ypad = resize(Y, n, Ysize(2));
+    Ypad = reshape(Y, n, []);
+	% Ypad = resize(Y, n, Ysize(2));
 	X = transpose(bi2de(logical(transpose(Ypad)), 2, order));
+    
