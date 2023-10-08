@@ -2,28 +2,21 @@ import numpy as np
 
 
 def int2bit(x, nbits=8, ismsb=True):
+    '''Convert data from packed to unpacked'''
     bitorder = 'big' if ismsb else 'little'
 
     if nbits > 8 and nbits // 8 * 8 != nbits:
         raise ValueError('nbits must be less than or equal to 8 (or a multiple of 8)')
-    if nbits > 8:
-        # convert to bytes
-        if isinstance(x, list) or isinstance(x, np.ndarray):
-            xx_array = np.zeros((len(x), nbits//8), dtype=np.uint8)
-            for xidx, xx in enumerate(x):
-                xx = xx.to_bytes(nbits // 8, byteorder=bitorder)
-                xx = np.frombuffer(xx, dtype=np.uint8)
-                xx_array[xidx, :] = xx
-            x = xx_array
-        else:
-            x = x.to_bytes(nbits // 8, byteorder=bitorder)
-            x = np.frombuffer(x, dtype=np.uint8)
 
-    symbits = np.array(x, dtype=np.uint8).reshape((-1, 1))
-    unpackbits = np.unpackbits(np.array(symbits, dtype=np.uint8), axis=1, bitorder=bitorder)[-nbits:]
-    if nbits > 8:
-        return unpackbits.reshape(-1, nbits)
-    return unpackbits
+    outbits = np.zeros(nbits * len(x), dtype=np.uint8)
+    for xidx, xdata in enumerate(x):
+        for jj in range(nbits):
+            if bitorder == 'little':
+                outbits[xidx * nbits + jj] = (xdata >> (nbits - jj - 1)) & 1
+            else:
+                outbits[xidx * nbits + jj] = (xdata >> jj) & 1
+
+    return outbits
 
 
 def bit2int(x, nbits=8, ismsb=True):
